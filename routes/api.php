@@ -22,3 +22,7 @@ Route::prefix('import')->group(function () {
     Route::post('csv_prepare', 'Api\CsvImportController@prepareCsv');
     Route::post('csv_store', 'Api\CsvImportController@storeCsv');
 });
+
+Route::prefix('products')->group(function () {
+    Route::post('get', 'Api\ProductsController@get');
+});

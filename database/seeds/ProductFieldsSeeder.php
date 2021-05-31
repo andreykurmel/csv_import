@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\DbProductField;
+use App\Models\DbProductField;
 
 class ProductFieldsSeeder extends Seeder
 {

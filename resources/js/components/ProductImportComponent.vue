@@ -1,5 +1,10 @@
 <template>
     <div class="container-fluid">
+        <div class="form-group d-flex justify-content-around links-wrap">
+            <router-link to="/about">About</router-link>
+            <router-link to="/products">Products</router-link>
+        </div>
+
         <upload-block
                 v-if="!for_import.prepared"
                 @file-parsed="csvParsed"
@@ -39,3 +44,10 @@
         },
     }
 </script>
+
+<style lang="scss" scoped="">
+    .links-wrap {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+</style>

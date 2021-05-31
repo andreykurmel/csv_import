@@ -16,10 +16,47 @@
  * Eg. ./components/UploadBlock.vue -> <example-component></example-component>
  */
 
+//import Vue from 'vue'; //cause an error
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
+
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('product-import-component', require('./components/ProductImportComponent.vue').default);
+import ProductImportComponent from './components/ProductImportComponent.vue';
+import AboutElement from './components/router/AboutElement.vue';
+import ProductsViewer from './components/router/ProductsViewer.vue';
+import SingleProduct from './components/router/SingleProduct.vue';
+import Page404 from './components/router/Page404.vue';
+
+//Router
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        { path: '/', component: ProductImportComponent, name: 'home', },
+        {
+            path: '/about',
+            component: AboutElement,
+            name: 'about',
+            children: [
+                {
+                    path: ':id',
+                    components: {
+                        default: SingleProduct,
+                        preproducts: ProductsViewer,
+                    },
+                    props: {
+                        default: true,
+                        preproducts: false,
+                    },
+                },
+            ],
+        },
+        { path: '/products', component: ProductsViewer, name: 'all-products' },
+        { path: '*', component: Page404, name: 'not-found' },
+    ],
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,7 +64,10 @@ Vue.component('product-import-component', require('./components/ProductImportCom
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+export const eventBus = new Vue();
+
 const app = new Vue({
+    router,
     el: '#app',
 });
 

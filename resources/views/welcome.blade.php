@@ -45,6 +45,7 @@
 
             .content {
                 text-align: center;
+                width: 100%;
             }
 
             .title {
@@ -83,7 +84,7 @@
             @endif
 
             <div class="content">
-                <product-import-component></product-import-component>
+                <router-view></router-view>
             </div>
         </div>
 

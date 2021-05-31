@@ -4,7 +4,7 @@
 namespace App\Repositories;
 
 
-use App\DbProductField;
+use App\Models\DbProductField;
 use App\Entities\ProductField;
 use Illuminate\Support\Collection;
 

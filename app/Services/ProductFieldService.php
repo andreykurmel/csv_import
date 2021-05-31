@@ -4,7 +4,7 @@
 namespace App\Services;
 
 
-use App\DbProduct;
+use App\Models\DbProduct;
 use App\Entities\ProductField;
 use App\Repositories\RepositoryFactory;
 use Illuminate\Database\Schema\Blueprint;
