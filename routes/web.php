@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    //\Illuminate\Support\Facades\Cache::put('some', 'about');
+    dd(\Illuminate\Support\Facades\Cache::get('some'));
     return view('welcome');
 });
 
